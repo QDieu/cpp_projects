@@ -1,4 +1,0 @@
-﻿  goblin.cpp
-c:\users\navvy\desktop\cpp_projects\lab8\lab8\lab8\characters\goblin.cpp(6): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-c:\users\navvy\desktop\cpp_projects\lab8\lab8\lab8\characters\goblin.cpp(13): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
-  lab8.vcxproj -> C:\Users\navvy\Desktop\cpp_projects\lab8\lab8\Debug\lab8.exe
