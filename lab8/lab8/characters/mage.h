@@ -1,18 +1,9 @@
 #pragma once
-class mage
+class mage : public Hero
 {
 public:
 	mage();
-	void getStats();
-	int getHp();
-	int getArmor();
-	int getMp();
-	int getAttack();
-	int getRange();
-	int takeDamage(int damage);
-	void oneOfEight();
-
-private:
-	int hp_, mp_, armor_, attack_, range_;
+	int takeDamage(int damage) override;
+	int skill() override;
 };
 

@@ -1,72 +1,33 @@
 #include "../stdafx.h"
 #include "knight.h"
 
-knight::knight()
+knight::knight(): Hero(35,15,0,1,5)
 {
-	hp_ = 35;
-	range_ = 1;
-	armor_ = 15;
-	attack_ = 5;
 }
 
-void knight::getStats()
+int knight::getAttack() const
 {
-	cout << "hp = " << getHp() << endl;
-	cout << "armor = " << getArmor() << endl;
-	cout << "attack = " << getAttack() << endl;
+	if (getArmor() > 0) return Hero::getAttack();
+	else return Hero::getAttack() * 2;
 }
 
-int knight::getHp()
+int knight::skill()
 {
-	return hp_;
-}
-
-int knight::getArmor()
-{
-	return armor_;
-}
-
-int knight::getAttack()
-{
-	return attack_;
-}
-
-int knight::getRange()
-{
-	return range_;
-}
-
-int knight::takeDamage(int damage)
-{
-	if (getArmor() > 0) 
-	{
-		if (getArmor() > damage)
+	if (getArmor() > 0) {
+		int eatAtOnce = 4;
+		if (getArmor() > eatAtOnce)
 		{
-			armor_ -= damage;
+			incAttack(eatAtOnce);
+			decArmor(eatAtOnce);
 		}
 		else
 		{
-			damage -= armor_;
-			hp_ -= damage;
-		}		
+			eatAtOnce = getArmor() - 1;
+			incAttack(eatAtOnce);
+			decArmor(eatAtOnce);
+		}
+		cout << "You eat " << eatAtOnce << "armor" << endl;
 	}
-	else hp_ -= damage;
-	return damage;
-}
-
-void knight::eatArmor()
-{
-	int eatAtOnce = 4;
-	if (getArmor() > eatAtOnce)
-	{
-		attack_ += eatAtOnce;
-		armor_ -= eatAtOnce;
-	}
-	else
-	{
-		eatAtOnce = getArmor() - 1;
-		attack_ += eatAtOnce;
-		armor_ -= eatAtOnce;
-	}
-	cout << "You eat " << eatAtOnce << "armor" << endl;
+	else cout << "Nothing to eat" << endl;
+	return 0;
 }

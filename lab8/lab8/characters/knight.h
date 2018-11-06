@@ -1,15 +1,9 @@
 #pragma once
-class knight {
+class knight : public Hero
+{
 public:
 	knight();
-	void getStats();
-	int getHp();
-	int getArmor();
-	int getAttack();
-	int getRange();
-	int takeDamage(int damage);
-	void eatArmor();
-private:
-	int hp_, armor_, attack_, range_;
+	int getAttack() const override;
+	int skill() override;
 };
 

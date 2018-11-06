@@ -98,7 +98,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
@@ -148,8 +148,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="characters\goblin.h" />
+    <ClInclude Include="characters\Hero.h" />
     <ClInclude Include="characters\knight.h" />
     <ClInclude Include="characters\mage.h" />
+    <ClInclude Include="factories\base_factory.h" />
+    <ClInclude Include="factories\goblin_factory.h" />
+    <ClInclude Include="factories\knight_factory.h" />
+    <ClInclude Include="factories\mage_factory.h" />
     <ClInclude Include="game\game.h" />
     <ClInclude Include="game\player.h" />
     <ClInclude Include="stdafx.h" />
@@ -157,8 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="characters\goblin.cpp" />
+    <ClCompile Include="characters\Hero.cpp" />
     <ClCompile Include="characters\knight.cpp" />
     <ClCompile Include="characters\mage.cpp" />
+    <ClCompile Include="factories\base_factory.cpp" />
+    <ClCompile Include="factories\goblin_factory.cpp" />
+    <ClCompile Include="factories\knight_factory.cpp" />
+    <ClCompile Include="factories\mage_factory.cpp" />
     <ClCompile Include="game\game.cpp" />
     <ClCompile Include="game\player.cpp" />
     <ClCompile Include="lab8.cpp" />

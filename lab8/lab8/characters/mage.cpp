@@ -9,46 +9,8 @@ bool MagicShield()
 	return 0;
 }
 
-mage::mage()
+mage::mage(): Hero(35,0,60,2,6)
 {
-	hp_ = 25;
-	attack_ = 6;
-	range_ = 2;
-	armor_ = 0;
-	mp_ = 30;
-}
-
-void mage::getStats()
-{
-	cout << "hp = " << getHp() << endl;
-	cout << "mp = " << getMp() << endl;
-	cout << "attack = " << getAttack() << endl;
-	if (getArmor() > 0) cout << "armor = " << getArmor() << endl;
-}
-
-int mage::getHp()
-{
-	return hp_;
-}
-
-int mage::getArmor()
-{
-	return armor_;
-}
-
-int mage::getMp()
-{
-	return mp_;
-}
-
-int mage::getAttack()
-{
-	return attack_;
-}
-
-int mage::getRange()
-{
-	return range_;
 }
 
 int mage::takeDamage(int damage)
@@ -56,49 +18,50 @@ int mage::takeDamage(int damage)
 	if (getMp())
 	{
 		if (MagicShield()) {
-			mp_ -= damage * 2;
-			if (getMp() < 0) mp_ = 0;
+			decMp(damage * 2);
+			if (getMp() < 0) decMp(getMp());
 			cout << "Magic shiled protected Mage" << endl;
 			return 0;
 		}
 	}
-	hp_ -= damage;
+	decHp(damage);
 	return damage;
 }
 
-void mage::oneOfEight()
+int mage::skill()
 {
 	if (getMp()) 
 	{
 		srand(time(NULL));
-		mp_ = 0;
+		decMp(getMp());
 		switch(rand() % 4)
 		{
 		case 0: 
 		{
-			mp_ *= 2;
+			decMp(-getMp());
 			cout << "Mana doubled" << endl;
 			break;
 		}
 		case 1:
 		{
-			hp_ *= 2;
+			decHp(-getHp());
 			cout << "HP doubled" << endl;
 			break;
 		}
 		case 2:
 		{
-			hp_ = 0;
+			decHp(getHp());
 			cout << "HP dropped to zero" << endl;
 			break;
 		}
 		case 3:
 		{
-			armor_ = rand() % 15 + 1;
+			decArmor(rand() % 15 - 15);
 			cout << "Armor up " << endl;
 			break;
 		}
 		}
 	}
 	else cout << "You don't have MP" << endl;
+	return 0;
 }

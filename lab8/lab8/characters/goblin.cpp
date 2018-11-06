@@ -4,45 +4,21 @@
 bool goblin::DodgeDice()
 {
 	srand(time(NULL));
-	int DodgeChance = 50 * (1 + ((maxHp_ - hp_) / maxHp_));
+	int DodgeChance = 50 * (1 + ((maxHp_ - getHp()) / maxHp_));
 	return (DodgeChance > (rand() % 100));
 }
 
 bool goblin::HitUDice()
 {
 	srand(time(NULL));
-	int HitUsl = 50 * (1 - ((maxHp_ - hp_) / maxHp_));
+	int HitUsl = 50 * (1 - ((maxHp_ - getHp()) / maxHp_));
 	return (HitUsl > (rand() % 100));
 }
 
-goblin::goblin()
+goblin::goblin():Hero(40,0,0,1,10)
 {
-	hp_= 40;
-	maxHp_ = hp_;
-	attack_ = 10;
-	range_ = 1;
+	maxHp_ = getHp();
 	bombStatus_ = 0;
-}
-
-void goblin::getStats()
-{
-	cout << "HP = " << getHp() << endl;
-	cout << "attack = " << getAttack() << endl;
-}
-
-int goblin::getHp()
-{
-	return hp_;
-}
-
-int goblin::getAttack()
-{
-	return attack_;
-}
-
-int goblin::getRange()
-{
-	return range_;
 }
 
 int goblin::takeDamage(int damage)
@@ -54,17 +30,17 @@ int goblin::takeDamage(int damage)
 	}
 	else if (HitUDice())
 	{
-		hp_ -= attack_ * 2;
-		return attack_ * 2;
+		decHp(getAttack() * 2);
+		return getAttack()*2;
 	}
 	else
 	{
-		hp_ -= damage;
+		decHp(damage);
 		return damage;
 	}
 }
 
-int goblin::bomb()
+int goblin::skill()
 {
 	if (bombStatus_ == 0)
 	{

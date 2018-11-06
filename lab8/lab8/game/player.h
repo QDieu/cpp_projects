@@ -4,20 +4,23 @@ class player
 public:
 	player(std::string character);
 	player();
-	void getStats();
-	int getAttack();
-	int getHp();
-	int getRange();
+	~player();
 	std::string getCharacter();
-	bool skill();
-	int takeDamage(int damage);
-	int getPosition();
+	int getPosition() const;
 	void setPosition(int position);
+	int getHp() const;
+	int getMp() const;
+	int getArmor() const;
+	int getRange() const;
+	int getAttack() const;
+	int takeDamage(int damage);
+	int skill();
+	void getStats() const;
+	void setDirection(int value);
+	int getDirection();
 private:
-	goblin goblin;
-	knight knight;
-	mage mage;
+	Hero * hero;
 	std::string character_;
-	int currentPosition_;
+	int currentPosition_, currentDirection_;
 };
 

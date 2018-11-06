@@ -1,17 +1,13 @@
 #pragma once
-class goblin
+class goblin: public Hero
 {
 public:
 	goblin();
-	void getStats();
-	int getHp();
-	int getAttack();
-	int getRange();
-	int takeDamage(int damage);
-	int bomb();
+	int takeDamage(int damage) override;
+	int skill() override;
+private:
 	bool DodgeDice();
 	bool HitUDice();
-private:
-	int hp_, attack_, range_, bombStatus_, maxHp_;
+	int bombStatus_, maxHp_;
 };
 
